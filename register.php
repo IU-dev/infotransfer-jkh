@@ -11,7 +11,6 @@ $password_confirm = "";
 $email = "";
 $displayname = "";
 $error = "";
-$main = "";
 $correct = false;
 
 //проверить отправлена ли форма
@@ -23,7 +22,6 @@ $password = $_POST['password'];
 $password_confirm = $_POST['password-confirm'];
 $email = $_POST['email'];
 $displayname = $_POST['displayname'];
-$main = $_POST['section'];
 
 //инициализировать переменные для проверки формы
 $success = true;
@@ -57,7 +55,6 @@ $data['username'] = $username;
 $data['password'] = md5($password); //зашифровать пароль для хранения
 $data['email'] = $email;
 $data['displayname'] = $displayname;
-$data['main'] = $main;
 
 //создать новый объект пользователя
 $newUser = new User($data);
@@ -148,24 +145,6 @@ $correct = true;
       </div>
     </div>
   </div> 
-<div class="form-group ">
-			  <label class="control-label " for="section">
-			   Основное направление
-			  </label>
-			  <select class="select form-control" id="section" name="section">
-			<?php
-			$results = $db->select_fs('basic', "id != '0'");
-			 foreach($results as $row){
-				 $counter = $db->counter('users', "main = '".$row['name']."'");
-				 $maximal = (int)$row['max'];
-				 $now = (int)$counter;
-				 $ost = $maximal - $now;
-				 if($now < $maximal){
-				 echo '<option value="'.$row['name'].'">'.$row['name'].' (педагог '.$row['coach'].', время '.$row['time'].', мест '.strval($ost).' из '.strval($maximal).')</option>'; }
-        }
-			?>
-			  </select>
-			 </div>
 <div class="form-group row">
     <div class="offset-4 col-8">
       <button name="submit-form" type="submit" class="btn btn-primary">Зарегистрироваться</button>

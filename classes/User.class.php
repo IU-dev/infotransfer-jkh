@@ -51,7 +51,7 @@
 					"email" => "'$this->email'",
 					"join_date" => "'".date("Y-m-d H:i:s",time())."'",
 					"admin" => "0",
-					"main" => "'$this->main'",
+					"main" => "'None'",
 					"points" => "0",
 					"active" => "0"
 					);
