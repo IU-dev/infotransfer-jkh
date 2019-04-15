@@ -28,10 +28,10 @@ $user = unserialize($_SESSION['user']);
 	$info = $db->select('counters', "id = '".$_GET['id']."'");
 	if($info['type'] = "EE") echo '<h3>Счетчик электроэнергии '.$info['model'].'</h3>';
 	else if($info['type'] = "W") echo '<h3>Счетчик воды '.$info['model'].'</h3>';
-	echo '<br><strong>Поставщик услуг: <strong>'.$info['provider'];
-	echo '<br><strong>Серийный номер: <strong>'.$info['serial'];
-	echo '<br><strong>Лицевой счет поставщика: <strong>'.$info['licevoy'];
-	echo '<br><strong>Адрес размещения: <strong>'.$info['address'].'<br><br>';
+	echo '<br><strong>Поставщик услуг: </strong>'.$info['provider'];
+	echo '<br><strong>Серийный номер: </strong>'.$info['serial'];
+	echo '<br><strong>Лицевой счет поставщика: </strong>'.$info['licevoy'];
+	echo '<br><strong>Адрес размещения: </strong>'.$info['address'].'<br><br>';
 	echo '<h4>Пул показаний</h4>';
     $pool = $db->select_desc_fs('pool', "counter_id = '".$info['id']."'");
 	echo '<table class="table table-hover">' .
