@@ -58,8 +58,8 @@
 				$db = new DB();
 				$connection = $db->connect_get();
 				$now_state = $db->select('users', "username = '".$username."'");
-				$now_points = (int)$now_state['points'];
-				$up_points = $now_points + (int)$num;
+				$now_points = (float)$now_state['points'];
+				$up_points = $now_points + (float)$num;
 				$data['points'] = "'".strval($up_points)."'";
 				$db->update($data, 'users', "username = '".$username."'");
 				$data1['userid'] = "'".$now_state['id']."'";
@@ -74,8 +74,8 @@
 				$db = new DB();
 				$connection = $db->connect_get();
 				$now_state = $db->select('users', "id = '".$username."'");
-				$now_points = (int)$now_state['points'];
-				$up_points = $now_points + (int)$num;
+				$now_points = (float)$now_state['points'];
+				$up_points = $now_points + (float)$num;
 				$data['points'] = "'".strval($up_points)."'";
 				$db->update($data, 'users', "id = '".$username."'");
 				$data1['userid'] = "'".$now_state['id']."'";
@@ -90,8 +90,8 @@
 				$db = new DB();
 				$connection = $db->connect_get();
 				$now_state = $db->select('users', "username = '".$username."'");
-				$now_points = (int)$now_state['points'];
-				$up_points = $now_points - (int)$num;
+				$now_points = (float)$now_state['points'];
+				$up_points = $now_points - (float)$num;
 				$data['points'] = "'".strval($up_points)."'";
 				$db->update($data, 'users', "username = '".$username."'");
 				$data1['userid'] = "'".$now_state['id']."'";
