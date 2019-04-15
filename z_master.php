@@ -26,7 +26,6 @@ $counter = $_POST['counter'];
 $data['user'] = "'".$user."'";
 $data['problem'] = "'".$problem."'";
 $data['comment'] = "'".$comment."'";
-$data['datetime'] = "'".$datetime."'";
 $data['counter'] = "'".$counter."'";
 $data['state'] = "'0'";
 $data['master'] = "'0'";
