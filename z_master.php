@@ -2,7 +2,7 @@
 //register.php
 
 require_once 'includes/global.inc.php';
-$page = "z_counter.php";
+$page = "z_master.php";
 require_once 'includes/header.inc.php';
 
 $userTools = new UserTools();
@@ -37,14 +37,14 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 ?>
 <html>
 <head>
-<title>Установка счетчика | Заявка | <?php echo $pname; ?></title>
+<title>Вызов мастера | Заявка | <?php echo $pname; ?></title>
 </head>
 <body>
 <?php if(isset($_SESSION['logged_in'])) : ?>
 <?php $user = unserialize($_SESSION['user']); ?>
 <?php if($error) echo $error; 
 	?>
-	<h3>Заявка на установку счетчика</h3>
+	<h3>Заявка на вызов мастера</h3>
 				<form class="form-vertical" action="z_counter.php" method="post">
 				 <fieldset>
 				 <div class="form-group">
@@ -62,12 +62,12 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 					  <input id="bally" name="bally" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo $bally; ?>"/> 
 					  </div>
 					</div>
+					Адрес вводится по примеру: 426000 УР, г. Ижевск, ул. Ленина, д. 1, кв. 1
 				  <div class="form-group">
 					  <label class="col control-label" for="login">Адрес установки счетчика</label>  
 					  <div class="col">
 					  <input id="login" name="login" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo $login; ?>"/> 
 					  </div>
-					  Адрес вводится по примеру: 426000 УР, г. Ижевск, ул. Ленина, д. 1, кв. 1
 					</div>
 					<div class="form-group">
 					  <label class="col control-label" for="phone">Телефон</label>  
