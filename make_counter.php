@@ -1,10 +1,11 @@
 <?php 
 
-$noshow = false;
 require_once 'includes/global.inc.php';
 $page = "make_counter.php";
 require_once 'includes/header.inc.php';
 
+
+$noshow = 0;
 if(!isset($_SESSION['logged_in'])) {
 header("Location: login.php");
 }
@@ -14,7 +15,7 @@ if(!isset($_GET['id']) && !isset($_POST['submit'])){
 }
 
 if(isset($_POST['submit'])){
-	$noshow = true;
+	$noshow = 1;
 	$data['serial'] = "'".$_POST['serial']."'";
 	$data['licevoy'] = "'".$_POST['licevoy']."'";
 	$data['provider'] = "'".$_POST['provider']."'";
@@ -34,7 +35,7 @@ $user = unserialize($_SESSION['user']);
 <center>
 <?php if($error) echo $error; ?>
 <?php if(isset($_SESSION['logged_in']) && isset($_GET['id'])) : ?>
-<?php if($user->admin > 0 && noshow != true) : ?>
+<?php if($user->admin > 0 && noshow != 1) : ?>
 <?php $user = unserialize($_SESSION['user']); ?>
 	<?php
 	$info = $db->select('counters', "id = '".$_GET['id']."'");
