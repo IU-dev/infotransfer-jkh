@@ -32,7 +32,7 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 <?php if($error) echo $error; 
 	?>
 	<h3>Отправка уведомления</h3>
-				<form class="form-vertical" action="notify.php" method="post">
+				<form class="form-vertical" action="a2_notf.php" method="post">
 				 <fieldset>
 				  <div class="form-group">
 					  <label class="col control-label" for="login">Логин</label>  
