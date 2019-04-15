@@ -9,29 +9,28 @@ $userTools = new UserTools();
 //инициализируем php переменные, которые используются в форме
 
 $error = "";
-$login = "";
-$bally = "";
+$user = "";
+$problem = "";
+$datetime = "";
+$counter = "";
 $comment = "";
-$phone = "";
-$type = "";
 
 if(isset($_POST['submit-addpoints'])) { 
 
 $user = unserialize($_SESSION['user']);
-$type = $_POST['type'];
-$login = $_POST['login'];
-$bally = $_POST['bally'];
+$user = $_POST['user'];
+$problem = $_POST['problem'];
 $comment = $_POST['comment'];
-$phone = $_POST['phone'];
-
-$data['type'] = "'".$type."'";
-$data['phone'] = "'".$phone."'";
-$data['model'] = "'".$bally."'";
-$data['address'] = "'".$login."'";
-$data['placement'] = "'".$comment."'";
+$datetime = $_POST['datetime'];
+$counter = $_POST['counter'];
+$data['user'] = "'".$user."'";
+$data['problem'] = "'".$problem."'";
+$data['comment'] = "'".$comment."'";
+$data['datetime'] = "'".$datetime."'";
+$data['counter'] = "'".$counter."'";
 $data['state'] = "'0'";
-$data['client_id'] = "'".$user->id."'";
-$db->insert($data, 'counters');
+$data['master'] = "'0'";
+$db->insert($data, 'tickets');
 $error = '<div class="alert alert-success" role="alert">Запрос выполнен.</div>';
 }
 ?>
@@ -45,42 +44,34 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 <?php if($error) echo $error; 
 	?>
 	<h3>Заявка на вызов мастера</h3>
-				<form class="form-vertical" action="z_counter.php" method="post">
+				<form class="form-vertical" action="z_master.php" method="post">
 				 <fieldset>
 				 <div class="form-group">
-					<label for="type" class="col-4 col-form-label">Тип счетчика</label> 
+					<label for="counter" class="col-4 col-form-label">Счетчик</label> 
 					<div class="col">
-					  <select id="type" name="type" class="custom-select" required="required">
-						<option value="EE">Электроэнергия</option>
-						<option value="W">Вода</option>
+					  <select id="counter" name="counter" class="custom-select" required="required">
+					  <?php 
+					  $counters = $db->select_fs('counters', "client_id = '".$user->id."'");
+					  foreach($counters as $counter){
+						echo '<option value="'.$counter['id'].'">'.$counter['serial'].' '.$counter['model'].'</option>';
+					  }
+						?>
 					  </select>
 					</div>
 				  </div> 
-				 <div class="form-group">
-					  <label class="col control-label" for="login">Модель</label>  
-					  <div class="col">
-					  <input id="bally" name="bally" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo $bally; ?>"/> 
-					  </div>
-					</div>
-					Адрес вводится по примеру: 426000 УР, г. Ижевск, ул. Ленина, д. 1, кв. 1
-				  <div class="form-group">
-					  <label class="col control-label" for="login">Адрес установки счетчика</label>  
-					  <div class="col">
-					  <input id="login" name="login" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo $login; ?>"/> 
-					  </div>
-					</div>
 					<div class="form-group">
-					  <label class="col control-label" for="phone">Телефон</label>  
-					  <div class="col">
-					  <input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo $phone; ?>"/> 
-					  </div>
-					</div>
-					<div class="form-group">
-					  <label class="col control-label" for="login">Удобное для установки дата и время</label>  
+					  <label class="col control-label" for="comment">Удобное для выезда дата и время</label>  
 					  <div class="col">
 					  <input id="comment" name="comment" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo $comment; ?>"/> 
 					  </div>
 					</div>
+					<div class="form-group">
+					  <label class="col control-label" for="problem">Описание проблемы</label>  
+					  <div class="col">
+					  <input id="problem" name="problem" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo $problem; ?>"/> 
+					  </div>
+					</div>
+					<input type="hidden" id="user" name="user" value="<?php echo $user->id; ?>">
 					<div class="form-group">
 					  <label class="col control-label" for="submit"></label>
 					  <div class="col">
@@ -89,6 +80,34 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 					</div>
 					</fieldset>
 					</form>
+					<br><br><h3>Заявки</h3>
+<?php
+    $counters = $db->select_desc_fs('tickets', "user = '".$user->id."'");
+	echo '<table class="table table-hover">' .
+            '<thead>' .
+            '<tr>' .
+            '<th>№</th>' .
+			'<th>ID счетчика</th>' .
+			'<th>Описание проблемы</th>' .
+			'<th>Статус</th>' .
+            '</tr>' .
+            '</thead>';
+	$i = 1;
+	foreach($counters as $counter){
+		if($counter['state'] == "0"){
+			echo '<tr>';
+			echo '<td>'.$i.'</td>';
+			echo '<td>'.$counter['counter'].'</td>';
+			echo '<td>'.$counter['comment'].'</td>';
+			if($counter['state'] = "0") echo '<td>Новая</td>';
+			$master = $db->select('users', "id = '".$counter['master']."'");
+			if($counter['state'] = "1") echo '<td>Взята мастером '.$master['displayname'].'</td>';
+			if($counter['state'] = "2") echo '<td>Выполнена мастером '.$master['displayname'].'</td>';
+		echo '</tr>';}
+			$i = $i +1;
+	}
+	echo '</table>';
+?>
 <?php else : ?>
 Вы не авторизованы.
 <?php endif; ?>
