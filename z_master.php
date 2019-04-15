@@ -94,7 +94,6 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
             '</thead>';
 	$i = 1;
 	foreach($counters as $counter){
-		if($counter['state'] == "0"){
 			echo '<tr>';
 			echo '<td>'.$i.'</td>';
 			$sch = $db->select('counters', "id = '".$counter['counter']."'");
@@ -105,7 +104,7 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 			else{ $master = $db->select('users', "id = '".$counter['master']."'");
 			if($counter['state'] == "1") echo '<td>Взята мастером '.$master['displayname'].'</td>';
 			if($counter['state'] == "2") echo '<td>Выполнена мастером '.$master['displayname'].'</td>'; }
-		echo '</tr>';}
+		echo '</tr>';
 			$i = $i +1;
 	}
 	echo '</table>';
