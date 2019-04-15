@@ -1,7 +1,7 @@
 <?php 
 
 require_once 'includes/global.inc.php';
-$page = "settings.php";
+$page = "counters.php";
 require_once 'includes/header.inc.php';
 
 if(!isset($_SESSION['logged_in'])) {
