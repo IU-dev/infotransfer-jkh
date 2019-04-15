@@ -5,10 +5,14 @@ $page = "make_counter.php";
 require_once 'includes/header.inc.php';
 
 
+$user = unserialize($_SESSION['user']);
+
 $noshow = 0;
 if(!isset($_SESSION['logged_in'])) {
 header("Location: login.php");
 }
+
+$userTools = new UserTools();
 
 if(!isset($_GET['id']) && !isset($_POST['submit'])){
 	$error = "Неверный запрос!";
@@ -22,6 +26,7 @@ if(isset($_POST['submit'])){
 	$data['state'] = "'1'";
 	$db->update($data, 'counters', "id = '".$_POST['counterid']."'");
 	$error = "Регистрация прошла успешно.";
+	$userTools->notify_id($_POST['userid'], "Система", "Произведена установка счетчика (ID ".$_POST['counterid'].") мастером ".$user->displayname)
 }
 
 $user = unserialize($_SESSION['user']);
@@ -87,6 +92,7 @@ $user = unserialize($_SESSION['user']);
     </div>
   </div> 
    <input type="hidden" id="counterid" name="counterid" value="<?php echo $_GET['id']; ?>">
+   <input type="hidden" id="userid" name="userid" value="<?php echo $info['client_id']; ?>">
   <div class="form-group row">
     <div class="offset-4 col-8">
       <button name="submit" type="submit" class="btn btn-primary">Установить</button>

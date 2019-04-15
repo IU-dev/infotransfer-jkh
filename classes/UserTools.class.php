@@ -113,6 +113,18 @@
 				$db->insert($data1, 'logs');
 				return true;
 		}
+		
+		public function notify_id($username, $who, $comment){
+				$db = new DB();
+				$connection = $db->connect_get();
+				$now_state = $db->select('users', "id = '".$username."'");
+				$data1['userid'] = "'".$now_state['id']."'";
+				$data1['datetime'] = "'".date("Y-m-d H:i:s",time())."'";
+				$data1['ot'] = "'".$who."'";
+				$data1['text'] = "'".$comment."'";
+				$db->insert($data1, 'logs');
+				return true;
+		}
 	}
 
 ?>
