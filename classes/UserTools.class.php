@@ -65,7 +65,7 @@
 				$data1['userid'] = "'".$now_state['id']."'";
 				$data1['datetime'] = "'".date("Y-m-d H:i:s",time())."'";
 				$data1['ot'] = "'Система'";
-				$data1['text'] = "'Пользователь ".$who." зачислил ".number_format((float)$num, 2, '.', '');." рублей (было ".number_format((float)$now_points, 2, '.', '');.", стало ".number_format((float)$up_points, 2, '.', '');.")'";
+				$data1['text'] = "'Пользователь ".$who." зачислил ".number_format((float)$num, 2, '.', '')." рублей (было ".number_format((float)$now_points, 2, '.', '').", стало ".number_format((float)$up_points, 2, '.', '').")'";
 				$db->insert($data1, 'logs');
 				return true;
 		}
@@ -81,7 +81,7 @@
 				$data1['userid'] = "'".$now_state['id']."'";
 				$data1['datetime'] = "'".date("Y-m-d H:i:s",time())."'";
 				$data1['ot'] = "'Система'";
-				$data1['text'] = "'Пользователь ".$who." зачислил ".number_format((float)$num, 2, '.', '');." рублей (было ".number_format((float)$now_points, 2, '.', '');.", стало ".number_format((float)$up_points, 2, '.', '');.")'";
+				$data1['text'] = "'Пользователь ".$who." зачислил ".number_format((float)$num, 2, '.', '')." рублей (было ".number_format((float)$now_points, 2, '.', '').", стало ".number_format((float)$up_points, 2, '.', '').")'";
 				$db->insert($data1, 'logs');
 				return true;
 		}
@@ -97,7 +97,7 @@
 				$data1['userid'] = "'".$now_state['id']."'";
 				$data1['datetime'] = "'".date("Y-m-d H:i:s",time())."'";
 				$data1['ot'] = "'Система'";
-				$data1['text'] = "'Пользователь ".$who." списал ".number_format((float)$num, 2, '.', '');." рублей (было ".number_format((float)$now_points, 2, '.', '');.", стало ".number_format((float)$up_points, 2, '.', '');.")'";
+				$data1['text'] = "'Пользователь ".$who." списал ".number_format((float)$num, 2, '.', '')." рублей (было ".number_format((float)$now_points, 2, '.', '').", стало ".number_format((float)$up_points, 2, '.', '').")'";
 				$db->insert($data1, 'logs');
 				return true;
 		}
