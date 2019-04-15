@@ -38,7 +38,7 @@ $user = unserialize($_SESSION['user']);
             '</thead>';
 	$i = 1;
 	foreach($counters as $counter){
-		if($counter['state'] == "1"){
+		if($counter['state'] == "0"){
 			echo '<tr>';
 			echo '<td>'.$i.'</td>';
 			echo '<td>'.$counter['id'].'</td>';
