@@ -26,8 +26,8 @@ $user = unserialize($_SESSION['user']);
 <?php $user = unserialize($_SESSION['user']); ?>
 	<?php
 	$info = $db->select('counters', "id = '".$_GET['id']."'");
-	if($info['type'] = "EE") echo '<h3>Счетчик электроэнергии '.$info['model'].'</h3>';
-	else if($info['type'] = "W") echo '<h3>Счетчик воды '.$info['model'].'</h3>';
+	if($info['type'] == "EE") echo '<h3>Счетчик электроэнергии '.$info['model'].'</h3>';
+	else if($info['type'] == "W") echo '<h3>Счетчик воды '.$info['model'].'</h3>';
 	echo '<br><strong>Поставщик услуг: </strong>'.$info['provider'];
 	echo '<br><strong>Серийный номер: </strong>'.$info['serial'];
 	echo '<br><strong>Лицевой счет поставщика: </strong>'.$info['licevoy'];
