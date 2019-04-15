@@ -24,12 +24,12 @@
 			</div>
 			</li>
 			<?php if($user->admin > 0) : ?>
-			<li class="nav-item dropdown <?php echo ($page == "make_counter.php" || $page == "make_call.php" ? "active" : "");?>">
+			<li class="nav-item dropdown <?php echo ($page == "make_counters.php" || $page == "make_call.php" ? "active" : "");?>">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			  А1 Регистрация данных
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			  <a class="dropdown-item <?php echo ($page == "make_counter.php" ? "active" : "");?>" href="make_counter">А1.1 Установить счетчик</a>
+			  <a class="dropdown-item <?php echo ($page == "make_counters.php" ? "active" : "");?>" href="make_counters">А1.1 Установить счетчик</a>
 			  <a class="dropdown-item <?php echo ($page == "make_call.php" ? "active" : "");?>" href="make_call">А1.2 Вызовы мастера</a>
 			</div>
 			</li>
