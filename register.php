@@ -35,18 +35,6 @@ $error = '<div class="alert alert-danger" role="alert">Логин уже сущ�
 $success = false;
 }
 
-$counter = $db->counter('users', "main = '".$main."'");
-$course = $db->select('basic', "name = '".$main."'");
-if($password != $password_confirm) {
-$error = '<div class="alert alert-danger" role="alert">Пароли не совпадают.</div>';
-$success = false;
-}
-
-if((int)$counter >= (int)$course['max']){
-$error = '<div class="alert alert-danger" role="alert">Количество детей на курсе превышено.</div>';
-$success = false;	
-}
-
 
 if($success)
 {
