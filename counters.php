@@ -22,7 +22,7 @@ $user = unserialize($_SESSION['user']);
 <?php if($error) echo $error; ?>
 	<h3>Счетчики клиента</h3>
 	<?php
-    $counters = $db->select_fs('counters', "client_id = '".$user->."'");
+    $counters = $db->select_fs('counters', "client_id = '".$user->id."'");
 	echo '<table class="table table-hover">' .
             '<thead>' .
             '<tr>' .
