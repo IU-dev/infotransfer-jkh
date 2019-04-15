@@ -16,7 +16,7 @@
             </li>
 			<li class="nav-item dropdown <?php echo ($page == "z_counter.php" || $page == "z_master.php" ? "active" : "");?>">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			  Подать заявку
+			  Заявки
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 			  <a class="dropdown-item <?php echo ($page == "z_counter.php" ? "active" : "");?>" href="z_counter">Установка счетчика</a>
@@ -24,13 +24,17 @@
 			</div>
 			</li>
 			<?php if($user->admin > 0) : ?>
-			<li class="nav-item dropdown <?php echo ($page == "make_counters.php" || $page == "make_call.php" ? "active" : "");?>">
+			<li class="nav-item dropdown <?php echo ($page == "make_counters.php" || $page == "make_calls.php" || $page == "make_mycalls.php" || $page == "make_call.php" ? "active" : "");?>">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			  А1 Регистрация данных
+			  А1 Панель мастера
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			  <a class="dropdown-item <?php echo ($page == "make_counters.php" ? "active" : "");?>" href="make_counters">А1.1 Установить счетчик</a>
-			  <a class="dropdown-item <?php echo ($page == "make_call.php" ? "active" : "");?>" href="make_call">А1.2 Вызовы мастера</a>
+			<h6 class="dropdown-header">А1.1 Основные функции</h6>
+			  <a class="dropdown-item <?php echo ($page == "make_counters.php" ? "active" : "");?>" href="make_counters">А1.1.1 Установка счетчика</a>
+			  <div class="dropdown-divider"></div>
+			  <h6 class="dropdown-header">А1.2 Вызовы</h6>
+			  <a class="dropdown-item <?php echo ($page == "make_calls.php" ? "active" : "");?>" href="make_calls">А1.2.1 Все вызовы</a>
+			  <a class="dropdown-item <?php echo ($page == "make_mycalls.php" ? "active" : "");?>" href="make_mycalls">А1.2.2 Мои вызовы</a>
 			</div>
 			</li>
 			<?php if($user->admin > 1) : ?>

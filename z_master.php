@@ -87,6 +87,7 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
             '<tr>' .
             '<th>№</th>' .
 			'<th>ID счетчика</th>' .
+			'<th>Дата и время</th>' .
 			'<th>Описание проблемы</th>' .
 			'<th>Статус</th>' .
             '</tr>' .
@@ -96,8 +97,10 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 		if($counter['state'] == "0"){
 			echo '<tr>';
 			echo '<td>'.$i.'</td>';
-			echo '<td>'.$counter['counter'].'</td>';
+			$sch = $db->select('counters', "id = '".$counter['counter']."'");
+			echo '<td>'.$sch['serial'].' '.$sch['model'].'</td>';
 			echo '<td>'.$counter['comment'].'</td>';
+			echo '<td>'.$counter['problem'].'</td>';
 			if($counter['state'] == "0") echo '<td>Новая</td>';
 			else{ $master = $db->select('users', "id = '".$counter['master']."'");
 			if($counter['state'] == "1") echo '<td>Взята мастером '.$master['displayname'].'</td>';
