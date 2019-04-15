@@ -49,7 +49,7 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 				 <fieldset>
 				 <div class="form-group">
 					<label for="type" class="col-4 col-form-label">Тип счетчика</label> 
-					<div class="col-8">
+					<div class="col">
 					  <select id="type" name="type" class="custom-select" required="required">
 						<option value="EE">Электроэнергия</option>
 						<option value="W">Вода</option>
