@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
 	$data['state'] = "'1'";
 	$db->update($data, 'counters', "id = '".$_POST['counterid']."'");
 	$error = "Регистрация прошла успешно.";
-	$userTools->notify_id($_POST['userid'], "Система", "Произведена установка счетчика (ID ".$_POST['counterid'].") мастером ".$user->displayname)
+	$userTools->notify_id($_POST['userid'], "Система", "Произведена установка счетчика (ID ".$_POST['counterid'].") мастером ".$user->displayname);
 }
 
 $user = unserialize($_SESSION['user']);
