@@ -37,6 +37,7 @@ $user = unserialize($_SESSION['user']);
             '</thead>';
 	$i = 1;
 	foreach($counters as $counter){
+		if($counter['state'] == "1"){
 			echo '<tr>';
 			echo '<td>'.$i.'</td>';
 			echo '<td>'.$counter['id'].'</td>';
@@ -46,7 +47,7 @@ $user = unserialize($_SESSION['user']);
 			echo '<td>'.$counter['model'].'</td>';
 			echo '<td>'.$counter['address'].'</td>';
 			echo '<td><a href="counter?id='.$counter['id'].'">Сведения</a></td>';
-			echo '</tr>';
+		echo '</tr>';}
 			$i = $i +1;
 	}
 	echo '</table>';

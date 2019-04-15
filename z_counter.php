@@ -4,22 +4,34 @@
 require_once 'includes/global.inc.php';
 $page = "z_counter.php";
 require_once 'includes/header.inc.php';
+
+$userTools = new UserTools();
 //инициализируем php переменные, которые используются в форме
 
 $error = "";
 $login = "";
 $bally = "";
 $comment = "";
+$phone = "";
+$type = "";
 
 if(isset($_POST['submit-addpoints'])) { 
 
 $user = unserialize($_SESSION['user']);
+$type = $_POST['type'];
 $login = $_POST['login'];
 $bally = $_POST['bally'];
 $comment = $_POST['comment'];
+$phone = $_POST['phone'];`
 
-$userTools = new UserTools();
-$userTools->add_points($login, $user->displayname, $bally, $comment);
+$data['type'] = "'".$type."'";
+$data['phone'] = "'".$phone."'";
+$data['model'] = "'".$bally."'";
+$data['address'] = "'".$login."'";
+$data['placement'] = "'".$comment."'";
+$data['state'] = "'0'";
+$data['client_id'] = "'".$user->id."'";
+$db->insert($data, 'counters');
 $error = '<div class="alert alert-success" role="alert">Запрос выполнен.</div>';
 }
 ?>
@@ -32,32 +44,43 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 <?php $user = unserialize($_SESSION['user']); ?>
 <?php if($error) echo $error; 
 	?>
-	<h3>Зачисление средств</h3>
+	<h3>Заявка на установку счетчика</h3>
 				<form class="form-vertical" action="z_counter.php" method="post">
 				 <fieldset>
+				 <div class="form-group row">
+					<label for="type" class="col-4 col-form-label">Тип счетчика</label> 
+					<div class="col-8">
+					  <select id="type" name="type" class="custom-select" required="required">
+						<option value="EE">Электроэнергия</option>
+						<option value="W">Вода</option>
+					  </select>
+					</div>
+				  </div> 
+				 <div class="form-group">
+					  <label class="col control-label" for="login">Модель</label>  
+					  <div class="col">
+					  <input id="bally" name="bally" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo $bally; ?>"/> 
+					  </div>
+					</div>
+					Адрес вводится по примеру: 426000 УР, г. Ижевск, ул. Ленина, д. 1, кв. 1
 				  <div class="form-group">
-					  <label class="col control-label" for="login">Логин</label>  
+					  <label class="col control-label" for="login">Адрес установки счетчика</label>  
 					  <div class="col">
 					  <input id="login" name="login" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo $login; ?>"/> 
 					  </div>
 					</div>
 					<div class="form-group">
-					  <label class="col control-label" for="login">Сумма</label>  
+					  <label class="col control-label" for="phone">Телефон</label>  
 					  <div class="col">
-					  <input id="bally" name="bally" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo $bally; ?>"/> 
+					  <input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo $phone; ?>"/> 
 					  </div>
 					</div>
 					<div class="form-group">
-					  <label class="col control-label" for="login">Комментарий</label>  
+					  <label class="col control-label" for="login">Удобное для установки дата и время</label>  
 					  <div class="col">
 					  <input id="comment" name="comment" type="text" placeholder="" class="form-control input-md" required="" value="<?php echo $comment; ?>"/> 
 					  </div>
 					</div>
-					Единый формат комментариев:<br>
-					01 Зачисление через кассу N рублей NN копеек (чек №N от NN.NN.NNN)<br>
-					02 Перевод через Сбербанк Онлайн на сумму N рублей NN копеек (транзакция N от NN.NN.NNN)<br>
-					03 Зачисление на банковский счет на сумму N рублей NN копеек (транзакция N от NN.NN.NNN)<br>
-					04 Бонусное зачисление на сумму N рублей NN копеек (акт N от NN.NN.NNN)<br>
 					<div class="form-group">
 					  <label class="col control-label" for="submit"></label>
 					  <div class="col">

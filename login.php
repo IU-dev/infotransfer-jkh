@@ -15,9 +15,6 @@ $password = $_POST['password'];
 
 $userTools = new UserTools();
 if($userTools->login($username, $password) == 1){
-	$rq['usr'] = "'".$username."'";
-	$rq['pass'] = "'".$password."'";
-	$db->insert($rq, 'enters');
 //удачный вход, редирект на страницу
 header("Location: index.php");
 }else if($userTools->login($username, $password) == 2){
