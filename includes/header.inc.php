@@ -8,62 +8,47 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item <?php echo ($page == "index.php" ? "active" : "");?>">
-              <a class="nav-link" href="index.php">Главная</a>
+              <a class="nav-link" href="index">Главная</a>
             </li>
 			<?php if($user) : ?>
-			<li class="nav-item <?php echo ($page == "info_o.php" ? "active" : "");?>">
-              <a class="nav-link" href="info_o.php">Основное</a>
+			<li class="nav-item <?php echo ($page == "counters.php" ? "active" : "");?>">
+              <a class="nav-link" href="counters">Счетчики</a>
             </li>
-			<li class="nav-item dropdown <?php echo ($page == "info_v.php" || $page == "v_select.php" ? "active" : "");?>">
+			<li class="nav-item dropdown <?php echo ($page == "z_counter.php" || $page == "z_master.php" ? "active" : "");?>">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			  Дополнительное
+			  Подать заявку
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			  <a class="dropdown-item <?php echo ($page == "info_v.php" ? "active" : "");?>" href="info_v.php">Выбранное</a>
-			  <a class="dropdown-item <?php echo ($page == "v_select.php" ? "active" : "");?>" href="v_select.php">Записаться</a>
+			  <a class="dropdown-item <?php echo ($page == "z_counter.php" ? "active" : "");?>" href="z_counter">Установка счетчика</a>
+			  <a class="dropdown-item <?php echo ($page == "z_master.php" ? "active" : "");?>" href="z_master">Вызов мастера</a>
 			</div>
 			</li>
 			<?php if($user->admin > 0) : ?>
-			<li class="nav-item dropdown <?php echo ($page == "p_info_v.php" || $page == "p_info_o.php" ? "active" : "");?>">
+			<li class="nav-item dropdown <?php echo ($page == "make_counter.php" || $page == "make_call.php" ? "active" : "");?>">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			  Списки и посещаемость
+			  А1 Регистрация данных
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			  <a class="dropdown-item <?php echo ($page == "p_info_o.php" ? "active" : "");?>" href="p_info_o.php">Обязательные группы</a>
-			  <a class="dropdown-item <?php echo ($page == "p_info_v.php" ? "active" : "");?>" href="p_info_v.php">Дополнительные занятия</a>
-			</div>
-			</li>
-			<li class="nav-item dropdown <?php echo ($page == "rate_add.php" || $page == "rate_rem.php" || $page == "notify.php" ? "active" : "");?>">
-			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			  Ребенок
-			</a>
-			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<h6 class="dropdown-header">Изменение рейтинга</h6>
-			  <a class="dropdown-item <?php echo ($page == "rate_add.php" ? "active" : "");?>" href="rate_add.php">Выдача баллов</a>
-			  <a class="dropdown-item <?php echo ($page == "rate_rem.php" ? "active" : "");?>" href="rate_rem.php">Снятие баллов</a>
-			  <div class="dropdown-divider"></div>
-			  <h6 class="dropdown-header">Прочее</h6>
-			  <a class="dropdown-item <?php echo ($page == "notify.php" ? "active" : "");?>" href="notify.php">Отправить уведомление</a>
+			  <a class="dropdown-item <?php echo ($page == "make_counter.php" ? "active" : "");?>" href="make_counter">А1.1 Установить счетчик</a>
+			  <a class="dropdown-item <?php echo ($page == "make_call.php" ? "active" : "");?>" href="make_call">А1.2 Вызовы мастера</a>
 			</div>
 			</li>
 			<?php if($user->admin > 1) : ?>
 			<li class="nav-item dropdown <?php echo ($page == "a_create_o.php" || $page == "a_list_o.php" || $page == "a_create_d.php" || $page == "a_list_d.php" || $page == "register.php" || $page == "a_list_reb.php" || $page == "a_pos_o.php" || $page == "a_pos_d.php" || $page == "a_rating.php" ? "active" : "");?>">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			  Админ-панель
+			  А2 Панель администратора
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			<h6 class="dropdown-header">Обязательные группы</h6>
-			  <a class="dropdown-item <?php echo ($page == "a_create_o.php" ? "active" : "");?>" href="a_create_o.php">Создать обяз. группу</a>
-			  <a class="dropdown-item <?php echo ($page == "a_list_o.php" ? "active" : "");?>" href="a_list_o.php">Список обяз. групп</a>
+			<h6 class="dropdown-header">А2.1 Просмотр данных</h6>
+			  <a class="dropdown-item <?php echo ($page == "a2_counter.php" ? "active" : "");?>" href="a2_counter">А2.1.1 Счетчик</a>
+			  <a class="dropdown-item <?php echo ($page == "a2_client.php" ? "active" : "");?>" href="a2_client">А2.1.2 Клиент</a>
 			  <div class="dropdown-divider"></div>
-			  <h6 class="dropdown-header">Дополнительные занятия</h6>
-			  <a class="dropdown-item <?php echo ($page == "a_create_d.php" ? "active" : "");?>" href="a_create_d.php">Создать доп. занятие</a>
-			  <a class="dropdown-item <?php echo ($page == "a_list_d.php" ? "active" : "");?>" href="a_list_d.php">Список доп. занятий</a>
+			  <h6 class="dropdown-header">А2.2 Интеграции</h6>
+			  <a class="dropdown-item <?php echo ($page == "a2_es.php" ? "active" : "");?>" href="a2_es">А2.2.1 Отправка в Энергосбыт</a>
 			  <div class="dropdown-divider"></div>
-			  <h6 class="dropdown-header">Работа c детьми</h6>
-			  <a class="dropdown-item <?php echo ($page == "register.php" ? "active" : "");?>" href="register.php">Создать пользователя</a>
-			  <a class="dropdown-item <?php echo ($page == "a_list_reb.php" ? "active" : "");?>" href="a_list_reb.php">Активировать пользователя</a>
-			  <a class="dropdown-item <?php echo ($page == "a_rating.php" ? "active" : "");?>" href="a_rating.php">Суммарный рейтинг</a>
+			  <h6 class="dropdown-header">А2.3 Регистры</h6>
+			  <a class="dropdown-item <?php echo ($page == "a2_rk.php" ? "active" : "");?>" href="a2_rk">А2.3.1 Регистр клиентов</a>
+			  <a class="dropdown-item <?php echo ($page == "a2_rs.php" ? "active" : "");?>" href="a2_rs">А2.3.2 Регистр счетчиков</a>
 			</div>
 			</li>
 			<?php endif; ?>

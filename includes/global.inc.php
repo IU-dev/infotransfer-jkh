@@ -3,7 +3,7 @@ require_once 'classes/User.class.php';
 require_once 'classes/UserTools.class.php';
 require_once 'classes/DB.class.php';
 
-$pname = "ИС Лагерь";
+$pname = "ИнфоТрансфер: ЖКХ";
 //connect to the database
 $db = new DB();
 $db->connect();

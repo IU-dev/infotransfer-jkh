@@ -1,7 +1,7 @@
 <?php
 //login.php
-require_once 'includes/global.inc.php';
-$page = "work.php";
+require_once 'includes/global_api.inc.php';
+$page = "api.php";
 $error = "";
 $pid = "";
 
