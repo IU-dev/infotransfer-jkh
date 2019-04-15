@@ -22,7 +22,7 @@ $type = $_POST['type'];
 $login = $_POST['login'];
 $bally = $_POST['bally'];
 $comment = $_POST['comment'];
-$phone = $_POST['phone'];`
+$phone = $_POST['phone'];
 
 $data['type'] = "'".$type."'";
 $data['phone'] = "'".$phone."'";
