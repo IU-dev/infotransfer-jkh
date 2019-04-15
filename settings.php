@@ -20,7 +20,7 @@ $user = unserialize($_SESSION['user']);
 <h1><?php echo $user->displayname; ?></h1>
 <h3><?php echo $user->username; ?></h3>
 <br><br>
-<h3>Всего баллов: <?php echo $user->points; ?></h3>
+<h3>Баланс счета: <?php echo $user->points; ?> рублей.</h3>
 </center>
 <?php
             echo '<table class="table table-sm table-hover">' .
