@@ -1,7 +1,7 @@
 <?php 
 
 require_once 'includes/global.inc.php';
-$page = "counter.php";
+$page = "counters.php";
 require_once 'includes/header.inc.php';
 
 if(!isset($_SESSION['logged_in'])) {
@@ -34,7 +34,8 @@ $user = unserialize($_SESSION['user']);
 	echo '<br><strong>Адрес размещения: </strong>'.$info['address'].'<br><br>';
 	echo '<h4>Пул показаний</h4>';
     $pool = $db->select_desc_fs('pool', "counter_id = '".$info['id']."'");
-	echo '<table class="table table-hover">' .
+	echo '<strong>Последнее показание: </strong>'.$pool[0]['data'];
+	echo '<table class="table table-hover table-sm">' .
             '<thead>' .
             '<tr>' .
 			'<th>Дата отправки</th>' .
