@@ -98,10 +98,10 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 			echo '<td>'.$i.'</td>';
 			echo '<td>'.$counter['counter'].'</td>';
 			echo '<td>'.$counter['comment'].'</td>';
-			if($counter['state'] = "0") echo '<td>Новая</td>';
-			$master = $db->select('users', "id = '".$counter['master']."'");
-			if($counter['state'] = "1") echo '<td>Взята мастером '.$master['displayname'].'</td>';
-			if($counter['state'] = "2") echo '<td>Выполнена мастером '.$master['displayname'].'</td>';
+			if($counter['state'] == "0") echo '<td>Новая</td>';
+			else{ $master = $db->select('users', "id = '".$counter['master']."'");
+			if($counter['state'] == "1") echo '<td>Взята мастером '.$master['displayname'].'</td>';
+			if($counter['state'] == "2") echo '<td>Выполнена мастером '.$master['displayname'].'</td>'; }
 		echo '</tr>';}
 			$i = $i +1;
 	}
