@@ -21,12 +21,13 @@ $user = unserialize($_SESSION['user']);
 </head>
 <body>
 <center>
-<?php if($error) echo $error; ?>
+<?php if($error) echo $error; echo '<br>'; ?>
 <?php if(isset($_SESSION['logged_in']) && isset($_GET['id'])) : ?>
 <?php $user = unserialize($_SESSION['user']); ?>
 	<?php
 	$info = $db->select('counters', "id = '".$_GET['id']."'");
-	if($info['type'] == "EE") echo '<h3>Счетчик электроэнергии '.$info['model'].'</h3>';
+	if($info['client_id'] != $user->id){ echo 'Попытка обхода - Вы пытаетесь получить информацию по чужому счетчику.'; }
+	else{ if($info['type'] == "EE") echo '<h3>Счетчик электроэнергии '.$info['model'].'</h3>';
 	else if($info['type'] == "W") echo '<h3>Счетчик воды '.$info['model'].'</h3>';
 	echo '<br><strong>Поставщик услуг: </strong>'.$info['provider'];
 	echo '<br><strong>Серийный номер: </strong>'.$info['serial'];
@@ -50,8 +51,8 @@ $user = unserialize($_SESSION['user']);
 			echo '</tr>';
 			$i = $i +1;
 	}
-	echo '</table>';
-?>
+	echo '</table>'; }
+	?>
 <br><br>
 <?php else : ?>
 Вы не авторизованы, или проведен неверный запрос.

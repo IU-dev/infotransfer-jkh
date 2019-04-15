@@ -53,6 +53,7 @@
 			  <h6 class="dropdown-header">А2.3 Регистры</h6>
 			  <a class="dropdown-item <?php echo ($page == "a2_rk.php" ? "active" : "");?>" href="a2_rk">А2.3.1 Регистр клиентов</a>
 			  <a class="dropdown-item <?php echo ($page == "a2_rs.php" ? "active" : "");?>" href="a2_rs">А2.3.2 Регистр счетчиков</a>
+			  <a class="dropdown-item <?php echo ($page == "a2_rw.php" ? "active" : "");?>" href="a2_rw">А2.3.3 Регистр сотрудников</a>
 			   <div class="dropdown-divider"></div>
 			  <h6 class="dropdown-header">А2.4 Работа с пользователями</h6>
 			  <a class="dropdown-item <?php echo ($page == "a2_nach.php" ? "active" : "");?>" href="a2_nach">А2.4.1 Зачисление средств</a>
