@@ -30,7 +30,7 @@ if(isset($_GET['ticket'])){
 <?php if($error) echo $error; ?>
 	<h3>Мои вызовы</h3>
 <?php
-    $counters = $db->select_fs('tickets', "state = '1' AND master = s'".$user->id."'");
+    $counters = $db->select_fs('tickets', "state = '1' AND master = '".$user->id."'");
 	echo '<table class="table table-hover">' .
             '<thead>' .
             '<tr>' .
