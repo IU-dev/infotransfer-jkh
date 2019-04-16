@@ -51,6 +51,7 @@ if(isset($_GET['ticket'])){
 			echo '<td>'.$sch['serial'].' '.$sch['model'].'</td>';
 			echo '<td>'.$cli['displayname'].' ('.$sch['address'].')</td>';
 			echo '<td>'.$counter['comment'].'</td>';
+			echo '<td>'.$counter['problem'].'</td>';
 			echo '<td><a href="make_calls.php?ticket='.$counter['id'].'">Взять в работу</a></td>';
 			
 		echo '</tr>';
