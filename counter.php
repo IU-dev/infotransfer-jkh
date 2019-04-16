@@ -33,6 +33,8 @@ $user = unserialize($_SESSION['user']);
 	echo '<br><strong>Серийный номер: </strong>'.$info['serial'];
 	echo '<br><strong>Лицевой счет поставщика: </strong>'.$info['licevoy'];
 	echo '<br><strong>Адрес размещения: </strong>'.$info['address'].'<br><br>';
+	$ms = $db->select('users', "id = '".$info['master']."'");
+	echo '<br><strong>Установил мастер: </strong>'.$ms['displayname'].'<br><br>';
 	echo '<h4>Пул показаний</h4>';
     $pool = $db->select_desc_fs('pool', "counter_id = '".$info['id']."'");
 	echo '<strong>Последнее показание: </strong>'.$pool[0]['data'];

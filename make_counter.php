@@ -24,6 +24,7 @@ if(isset($_POST['submit'])){
 	$data['licevoy'] = "'".$_POST['licevoy']."'";
 	$data['provider'] = "'".$_POST['provider']."'";
 	$data['state'] = "'1'";
+	$data['master'] = "'".$user->id."'";
 	$db->update($data, 'counters', "id = '".$_POST['counterid']."'");
 	$error = "Регистрация прошла успешно.";
 	$userTools->notify_id($_POST['userid'], "Система", "Произведена установка счетчика (ID ".$_POST['counterid'].") мастером ".$user->displayname);
