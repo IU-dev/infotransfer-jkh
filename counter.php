@@ -32,7 +32,7 @@ $user = unserialize($_SESSION['user']);
 	echo '<br><strong>Поставщик услуг: </strong>'.$info['provider'];
 	echo '<br><strong>Серийный номер: </strong>'.$info['serial'];
 	echo '<br><strong>Лицевой счет поставщика: </strong>'.$info['licevoy'];
-	echo '<br><strong>Адрес размещения: </strong>'.$info['address'].'<br><br>';
+	echo '<br><strong>Адрес размещения: </strong>'.$info['address'];
 	$ms = $db->select('users', "id = '".$info['master']."'");
 	echo '<br><strong>Установил мастер: </strong>'.$ms['displayname'].'<br><br>';
 	echo '<h4>Пул показаний</h4>';
