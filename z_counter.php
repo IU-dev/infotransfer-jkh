@@ -98,19 +98,18 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
             '<tr>' .
             '<th>№</th>' .
 			'<th>ID счетчика</th>' .
-			'<th>Данные счетчика</th>' .
+			'<th>Модель</th>' .
 			'<th>Адрес установки</th>' .
 			'<th>Дата и время</th>' .
             '</tr>' .
             '</thead>';
 	$i = 1;
 	foreach($counters as $counter){
-		if($counter['state'] == 0){
+		if($counter['state'] == "0"){
 			echo '<tr>';
 			echo '<td>'.$i.'</td>';
 			echo '<td>'.$counter['id'].'</td>';
-			$sch = $db->select('counters', "id = '".$counter['counter']."'");
-			echo '<td>'.$sch['serial'].' '.$sch['model'].'</td>';
+			echo '<td>'.$counter['model'].'</td>';
 			echo '<td>'.$counter['address'].'</td>';
 			echo '<td>'.$counter['placement'].'</td>';
 		echo '</tr>';
