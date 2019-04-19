@@ -15,6 +15,7 @@ if(isset($_GET['ticket'])){
 	$data['master'] = "'".$user->id."'";
 	$db->update($data, 'tickets', "id = '".$_GET['ticket']."'");
 	$error = '<div class="alert alert-success" role="alert">Заявка взята в работу</div>';
+	$userTools->notify_id($_GET['user'], "Система", "Заявка с ID ".$_GET['ticket']." взята мастером ".$user->displayname);
 }
 
 ?>
@@ -52,7 +53,7 @@ if(isset($_GET['ticket'])){
 			echo '<td>'.$cli['displayname'].' ('.$sch['address'].')</td>';
 			echo '<td>'.$counter['comment'].'</td>';
 			echo '<td>'.$counter['problem'].'</td>';
-			echo '<td><a href="make_calls.php?ticket='.$counter['id'].'">Взять в работу</a></td>';
+			echo '<td><a href="make_calls.php?user='.$cli['id'].'&ticket='.$counter['id'].'">Взять в работу</a></td>';
 			
 		echo '</tr>';
 			$i = $i +1;

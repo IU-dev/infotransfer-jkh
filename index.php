@@ -11,7 +11,7 @@ require_once 'includes/header.inc.php';
 <body>
 <center>
 <br>
-<h1>ИнфоТрансфер: ЖКХ</h1>
+<h1>ИнфоТрансфер: ЖКХ</h1><br>
 <div class="alert alert-info" role="alert">
 <h3>Добро пожаловать!<h3>
 </div><br>

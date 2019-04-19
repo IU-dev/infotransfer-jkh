@@ -43,6 +43,7 @@
 			  А2 Панель администратора
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			<!---
 			<h6 class="dropdown-header">А2.1 Просмотр данных</h6>
 			  <a class="dropdown-item <?php echo ($page == "a2_counter.php" ? "active" : "");?>" href="a2_counter">А2.1.1 Счетчик</a>
 			  <a class="dropdown-item <?php echo ($page == "a2_client.php" ? "active" : "");?>" href="a2_client">А2.1.2 Клиент</a>
@@ -55,10 +56,11 @@
 			  <a class="dropdown-item <?php echo ($page == "a2_rs.php" ? "active" : "");?>" href="a2_rs">А2.3.2 Регистр счетчиков</a>
 			  <a class="dropdown-item <?php echo ($page == "a2_rw.php" ? "active" : "");?>" href="a2_rw">А2.3.3 Регистр сотрудников</a>
 			   <div class="dropdown-divider"></div>
-			  <h6 class="dropdown-header">А2.4 Работа с пользователями</h6>
-			  <a class="dropdown-item <?php echo ($page == "a2_nach.php" ? "active" : "");?>" href="a2_nach">А2.4.1 Зачисление средств</a>
-			  <a class="dropdown-item <?php echo ($page == "a2_spis.php" ? "active" : "");?>" href="a2_spis">А2.4.2 Списание средств</a>
-			  <a class="dropdown-item <?php echo ($page == "a2_notf.php" ? "active" : "");?>" href="a2_notf">А2.4.3 Уведомление</a>
+			   --->
+			  <h6 class="dropdown-header">А2.1 Работа с пользователями</h6>
+			  <a class="dropdown-item <?php echo ($page == "a2_nach.php" ? "active" : "");?>" href="a2_nach">А2.1.1 Зачисление средств</a>
+			  <a class="dropdown-item <?php echo ($page == "a2_spis.php" ? "active" : "");?>" href="a2_spis">А2.1.2 Списание средств</a>
+			  <a class="dropdown-item <?php echo ($page == "a2_notf.php" ? "active" : "");?>" href="a2_notf">А2.1.3 Уведомление</a>
 			</div>
 			</li>
 			<?php endif; ?>
