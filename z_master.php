@@ -52,6 +52,7 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 					  <?php 
 					  $counters = $db->select_fs('counters', "client_id = '".$user->id."'");
 					  foreach($counters as $counter){
+						  if($counter['state'] == "1")
 						echo '<option value="'.$counter['id'].'">'.$counter['serial'].' '.$counter['model'].'</option>';
 					  }
 						?>
