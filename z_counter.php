@@ -105,6 +105,7 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
             '</thead>';
 	$i = 1;
 	foreach($counters as $counter){
+		echo 'iteration';
 		if($counter['state'] == "0"){
 			echo '<tr>';
 			echo '<td>'.$i.'</td>';
