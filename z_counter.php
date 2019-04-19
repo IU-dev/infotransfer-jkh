@@ -92,7 +92,7 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 					
 <br><br><h3>Активные заявки</h3>
 <?php
-    $counters = $db->select_desc_fs('counter', "user = '".$user->id."'");
+    $counters = $db->select_desc_fs('counter', "client_id = '".$user->id."'");
 	echo '<table class="table table-hover">' .
             '<thead>' .
             '<tr>' .
