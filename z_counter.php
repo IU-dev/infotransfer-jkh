@@ -89,6 +89,36 @@ $error = '<div class="alert alert-success" role="alert">Запрос выпол�
 					</div>
 					</fieldset>
 					</form>
+					
+<br><br><h3>Активные заявки</h3>
+<?php
+    $counters = $db->select_desc_fs('counter', "user = '".$user->id."'");
+	echo '<table class="table table-hover">' .
+            '<thead>' .
+            '<tr>' .
+            '<th>№</th>' .
+			'<th>ID счетчика</th>' .
+			'<th>Данные счетчика</th>' .
+			'<th>Адрес установки</th>' .
+			'<th>Дата и время</th>' .
+            '</tr>' .
+            '</thead>';
+	$i = 1;
+	foreach($counters as $counter){
+		if($counter['state'] == "0"){
+			echo '<tr>';
+			echo '<td>'.$i.'</td>';
+			echo '<td>'.$counter['id'].'</td>';
+			$sch = $db->select('counters', "id = '".$counter['counter']."'");
+			echo '<td>'.$sch['serial'].' '.$sch['model'].'</td>';
+			echo '<td>'.$counter['address'].'</td>';
+			echo '<td>'.$counter['placement'].'</td>';
+		echo '</tr>';
+			$i = $i +1;
+		}
+	}
+	echo '</table>';
+?>
 <?php else : ?>
 Вы не авторизованы.
 <?php endif; ?>
