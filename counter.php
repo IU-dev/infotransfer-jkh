@@ -27,7 +27,7 @@ $user = unserialize($_SESSION['user']);
 	<?php
 	$info = $db->select('counters', "id = '".$_GET['id']."'");
 	if($info['client_id'] != $user->id){ echo 'Попытка обхода - Вы пытаетесь получить информацию по чужому счетчику.'; }
-	else{ if($info['type'] == "EE") echo '<h3>Счетчик электроэнергии '.$info['model'].'</h3>';
+	else{ if($info['type'] == "EE") echo '<h3>Счетчик электроэнергии '.$info['model'].'<span class="badge badge-secondary">&nbsp;'.$info['id'].'</span></h3>';
 	else if($info['type'] == "W") echo '<h3>Счетчик воды '.$info['model'].'</h3>';
 	echo '<br><strong>Поставщик услуг: </strong>'.$info['provider'];
 	echo '<br><strong>Серийный номер: </strong>'.$info['serial'];
