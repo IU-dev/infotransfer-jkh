@@ -46,7 +46,7 @@ $user = unserialize($_SESSION['user']);
 			echo '<td>'.$counter['serial'].'</td>';
 			echo '<td>'.$counter['model'].'</td>';
 			echo '<td>'.$counter['address'].'</td>';
-			echo '<td><a href="counter?id='.$counter['id'].'">Сведения</a></td>';
+			echo '<td><a class="badge badge-success" href="counter?id='.$counter['id'].'">Сведения</a></td>';
 		echo '</tr>';}
 			$i = $i +1;
 	}
