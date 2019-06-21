@@ -64,7 +64,7 @@ $user = unserialize($_SESSION['user']);
             var data = google.visualization.arrayToDataTable([
                 ['Дата, время', 'Показание'],
                 <?php
-                $pool = $db->select_desc_fs('pool', "counter_id = '".$info['id']."'");
+                $pool = $db->select_fs('pool', "counter_id = '".$info['id']."'");
                 $i = 1;
                 for($i = 0; $i <= count($pool); $i = $i + 1){
                     echo "['".date("d.m.Y H:i:s", strtotime($pool[$i]['send_date'] . " GMT"))."',  ".$pool[$i]['data'].",],";
