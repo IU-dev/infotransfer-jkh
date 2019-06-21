@@ -6,7 +6,7 @@
 		protected $db_name = 'admin_infotdb';
 		protected $db_user = 'admin_infot';
 		protected $db_pass = 'P@ssw0rd';
-		protected $db_host = 'localhost';
+		protected $db_host = '62.109.24.45';
 
 		// Открывает соединение к БД. Убедитесь, что
 		// эта функция вызывается на каждой странице 

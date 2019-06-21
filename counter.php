@@ -35,7 +35,7 @@ $user = unserialize($_SESSION['user']);
 	echo '<br><strong>Адрес размещения: </strong>'.$info['address'];
 	$ms = $db->select('users', "id = '".$info['master']."'");
 	echo '<br><strong>Установил мастер: </strong>'.$ms['displayname'].'<br><br>';
-	echo '<h4>Пул показаний</h4>';
+	/* echo '<h4>Пул показаний</h4>';
     $pool = $db->select_desc_fs('pool', "counter_id = '".$info['id']."'");
 	echo '<strong>Последнее показание: </strong>'.$pool[0]['data'];
 	echo '<table class="table table-hover table-sm">' .
@@ -53,8 +53,38 @@ $user = unserialize($_SESSION['user']);
 			echo '</tr>';
 			$i = $i +1;
 	}
-	echo '</table>'; }
+	echo '</table>'; */ }
 	?>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Дата, время', 'Показание'],
+                <?php
+                $pool = $db->select_desc_fs('pool', "counter_id = '".$info['id']."'");
+                $i = 1;
+                for($i = 0; $i <= count($pool); $i = $i + 1){
+                    echo "['".date("d.m.Y H:i:s", strtotime($pool[$i]['send_date'] . " GMT"))."',  ".$pool[$i]['data'].",],";
+                }
+                echo "['".date("d.m.Y H:i:s", strtotime($pool[$i]['send_date'] . " GMT"))."',  ".$pool[$i]['data'].",],";
+                ?>
+            ]);
+
+            var options = {
+                title: 'История показаний счетчика',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
 <br><br>
 <?php else : ?>
 Вы не авторизованы, или проведен неверный запрос.

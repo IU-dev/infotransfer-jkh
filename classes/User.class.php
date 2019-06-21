@@ -53,7 +53,7 @@
 					"admin" => "0",
 					"main" => "'None'",
 					"points" => "0",
-					"active" => "0"
+					"active" => "1"
 					);
 				$this->id = $db->insert($data, 'users');
 				$this->joinDate = time();
