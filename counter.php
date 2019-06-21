@@ -84,7 +84,7 @@ $user = unserialize($_SESSION['user']);
             chart.draw(data, options);
         }
     </script>
-    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    <div id="curve_chart"></div>
 <br><br>
 <?php else : ?>
 Вы не авторизованы, или проведен неверный запрос.
