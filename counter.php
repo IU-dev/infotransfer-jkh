@@ -59,6 +59,9 @@ $user = unserialize($_SESSION['user']);
             echo '</table>'; */
         }
         ?>
+        <?php $pool2 = $db->select_desc_fs('pool', "counter_id = '" . $info['id'] . "'");
+        echo '<strong>Последнее показание: </strong>'.$pool2[0]['data'].' (от '.$pool2[0]['send_date'].')';
+        ?>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
             google.charts.load('current', {'packages': ['corechart']});
