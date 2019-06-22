@@ -60,7 +60,7 @@ $user = unserialize($_SESSION['user']);
         }
         ?>
         <?php $pool2 = $db->select_desc_fs('pool', "counter_id = '" . $info['id'] . "'");
-        echo '<strong>Последнее показание: </strong>'.$pool2[0]['data'].' (от '.$pool2[0]['send_date'].')';
+        echo '<strong>Последнее показание: </strong>'.$pool2[0]['data'].' (от '.date("d.m.Y H:i:s", strtotime($pool2[0]['send_date'] . " GMT")).')';
         ?>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
