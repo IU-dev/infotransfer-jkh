@@ -35,8 +35,8 @@ if (isset($_GET['ticket'])) {
             echo '<table class="table table-hover">' .
                 '<thead>' .
                 '<tr>' .
-                '<th>№</th>' .
-                '<th>ID счетчика</th>' .
+                '<th>№ п/п</th>' .
+                '<th>ID</th>' .
                 '<th>Сведения по клиенту</th>' .
                 '<th>Дата и время</th>' .
                 '<th>Описание проблемы</th>' .
@@ -62,7 +62,7 @@ if (isset($_GET['ticket'])) {
             ?>
             <br><br>
         <?php else : ?>
-            Вы не авторизованы как мастер.ы
+            Вы не авторизованы как мастер.
         <?php endif; ?>
     <?php else : ?>
         Вы не авторизованы.
