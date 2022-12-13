@@ -4,7 +4,6 @@
 require_once 'includes/global.inc.php';
 $page = "register.php";
 require_once 'includes/header.inc.php';
-//инициализируем php переменные, которые используются в форме
 $username = "";
 $password = "";
 $password_confirm = "";
@@ -30,7 +29,7 @@ if (isset($_POST['submit-form'])) {
 //проверить правильность заполнения формы
 //проверить не занят ли этот логин
     if ($userTools->checkUsernameExists($username)) {
-        $error = '<div class="alert alert-danger" role="alert">Логин уже существует.</div>';
+        $error = '<div class="alert alert-warning" role="alert">Логин уже существует.</div>';
         $success = false;
     }
 
