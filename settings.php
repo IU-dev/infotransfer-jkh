@@ -31,6 +31,7 @@ echo '<table class="table table-sm table-hover">' .
     '<th>Содержание</th>' .
     '</tr>' .
     '</thead>';
+	// BUGFIX
 $notifs = $db->select_desc_fs('logs', "userid = '" . $user->id . "'");
 foreach ($notifs as $row) {
     echo '<tr>';
